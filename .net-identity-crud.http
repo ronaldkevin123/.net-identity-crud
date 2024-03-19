@@ -1,0 +1,6 @@
+@_net_identity_crud_HostAddress = http://localhost:5189
+
+GET {{_net_identity_crud_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
