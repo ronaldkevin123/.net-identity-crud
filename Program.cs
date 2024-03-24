@@ -85,6 +85,16 @@ builder.Services.AddAuthentication(options => {
     };
 });
 
+// CORS Setup for frontend
+builder.Services.AddCors(options => 
+    options.AddPolicy("CRUDui", policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        }
+));
+
 // Scopes (Repositories)
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
 
@@ -102,6 +112,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseCors("CRUDui");
 
 app.MapControllers();
 
